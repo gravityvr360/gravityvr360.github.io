@@ -613,9 +613,36 @@
     }
 
     .booking-form {
-      display: grid;
-      gap: 0.8rem;
-      margin-top: 0.4rem;
+      <form class="booking-form">
+  <div class="form-row">
+    <input class="form-input" type="text" name="name" placeholder="Name / Nom" required />
+    <input class="form-input" type="tel" name="phone" placeholder="Phone / Téléphone" required />
+  </div>
+
+  <div class="form-row">
+    <input class="form-input" type="email" name="email" placeholder="Email" required />
+    <input class="form-input" type="date" name="date" />
+  </div>
+
+  <div class="form-row">
+    <input class="form-input" type="number" name="players" min="1" placeholder="Number of players" />
+    <select class="form-select" name="eventType">
+      <option value="">Event type</option>
+      <option>Birthday</option>
+      <option>Team building</option>
+      <option>Friends night</option>
+      <option>School group</option>
+    </select>
+  </div>
+
+  <textarea class="form-textarea" name="message" placeholder="Tell us what kind of VR experience you want..."></textarea>
+
+  <button class="btn-primary" type="submit">
+    <span class="t-en">Send request</span>
+    <span class="t-fr">Envoyer la demande</span>
+  </button>
+</form>
+
     }
 
     .form-row {
@@ -1406,6 +1433,53 @@
 </footer>
 
 <script>
+  <script>
+  // Send booking info to WhatsApp
+  document.addEventListener("DOMContentLoaded", function () {
+    var bookingForm = document.querySelector(".booking-form");
+    if (!bookingForm) return;
+
+    bookingForm.addEventListener("submit", function (e) {
+      e.preventDefault(); // ما نخليهش الفورم يدير refresh
+
+      var nameInput = bookingForm.querySelector('input[name="name"]');
+      var phoneInput = bookingForm.querySelector('input[name="phone"]');
+      var emailInput = bookingForm.querySelector('input[name="email"]');
+      var dateInput = bookingForm.querySelector('input[name="date"]');
+      var playersInput = bookingForm.querySelector('input[name="players"]');
+      var eventTypeSelect = bookingForm.querySelector('select[name="eventType"]');
+      var messageTextarea = bookingForm.querySelector('textarea[name="message"]');
+
+      var name = nameInput ? nameInput.value : "";
+      var phone = phoneInput ? phoneInput.value : "";
+      var email = emailInput ? emailInput.value : "";
+      var date = dateInput ? dateInput.value : "";
+      var players = playersInput ? playersInput.value : "";
+      var eventType = eventTypeSelect ? eventTypeSelect.value : "";
+      var message = messageTextarea ? messageTextarea.value : "";
+
+      // النص اللي غادي يوصلك في واتساب
+      var fullMessage =
+        "New Gravity VR booking:" + "\n" +
+        "Name: " + name + "\n" +
+        "Phone: " + phone + "\n" +
+        "Email: " + email + "\n" +
+        "Date: " + date + "\n" +
+        "Players: " + players + "\n" +
+        "Event type: " + eventType + "\n" +
+        "Message: " + message;
+
+      // رقم الواتساب ديالك (بدون + وبدون فراغات)
+      var whatsappNumber = "212603243497"; // +212 603 243 497
+
+      var url = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(fullMessage);
+
+      // فتح واتساب (تطبيق في الهاتف أو WhatsApp Web في الحاسوب)
+      window.open(url, "_blank");
+    });
+  });
+</script>
+
   // Year in footer
   document.getElementById("year").textContent = new Date().getFullYear();
 
