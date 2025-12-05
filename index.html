@@ -743,7 +743,72 @@
       }
       .form-row {
         grid-template-columns: minmax(0, 1fr);
-      }
+      }/* 📱 تحسين عرض الموقع على الموبايل */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-x: hidden; /* منع سحب الشاشة يمين/يسار */
+  }
+
+  section {
+    padding: 40px 16px;  /* تقليل الهوامش وتوسيط المحتوى */
+  }
+
+  header {
+    padding: 12px 16px;
+  }
+
+  header nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* جعل الهيرو والكروت في عمود واحد بدل عمودين */
+  .hero,
+  .hero-inner,
+  .hero-layout,
+  .cards-row,
+  .attractions-row,
+  .pricing-row {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .hero > *,
+  .hero-inner > *,
+  .hero-layout > *,
+  .cards-row > *,
+  .attractions-row > *,
+  .pricing-row > * {
+    width: 100%;
+  }
+
+  /* جعل الفورم أسهل في القراءة */
+  form {
+    max-width: 100%;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    font-size: 15px;
+  }
+
+  /* الفيديو والصورة يأخذوا عرض الشاشة */
+  video,
+  .hero-video,
+  .hero-video video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 14px;
+  }
+}
+
     }
   </style>
 </head>
