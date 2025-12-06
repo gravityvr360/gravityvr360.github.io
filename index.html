@@ -5,7 +5,7 @@
   <title>GRAVITY VR | Marrakesh - VR & Gaming Center</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description"
-        content="GRAVITY VR in Marrakesh – VR racing, 360° rides...zombie machines, family attractions and a gaming zone." />
+        content="GRAVITY VR in Marrakesh – VR racing, 360° rides, zombie machines, family attractions and a gaming zone." />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -42,16 +42,15 @@
       padding: 0;
     }
 
-    html,
-    body {
+    html, body {
       height: 100%;
     }
 
     body {
       font-family: "Rubik", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background: radial-gradient(circle at top, rgba(56, 189, 248, 0.18), transparent 55%),
-        radial-gradient(circle at 80% 0, rgba(168, 85, 247, 0.18), transparent 55%),
-        var(--bg-hero);
+                  radial-gradient(circle at 80% 0, rgba(168, 85, 247, 0.18), transparent 55%),
+                  var(--bg-hero);
       color: var(--text);
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
@@ -61,13 +60,12 @@
       content: "";
       position: fixed;
       inset: 0;
-      background:
-        linear-gradient(
-          135deg,
-          rgba(15, 23, 42, 0.9),
-          rgba(15, 23, 42, 0.85),
-          rgba(15, 23, 42, 0.95)
-        );
+      background: linear-gradient(
+        135deg,
+        rgba(15, 23, 42, 0.9),
+        rgba(15, 23, 42, 0.85),
+        rgba(15, 23, 42, 0.95)
+      );
       z-index: -2;
     }
 
@@ -248,34 +246,23 @@
       min-width: 0;
     }
 
+    /* LOGO CONTAINER + IMAGE */
     .logo-orbit {
       width: 40px;
       height: 40px;
-      border-radius: 42%;
-      background:
-        radial-gradient(circle at 20% 0, rgba(248, 250, 252, 0.75), transparent 55%),
-        conic-gradient(from 200deg, #22d3ee, #a855f7, #f97316, #22d3ee);
-      padding: 2px;
-      box-shadow:
-        0 0 0 1px rgba(15, 23, 42, 0.8),
-        0 6px 16px rgba(15, 23, 42, 0.95);
+      border-radius: 12px;
+      overflow: hidden;
+      background: transparent;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .logo-core {
+    .logo-img {
       width: 100%;
       height: 100%;
-      border-radius: 40%;
-      background: radial-gradient(circle at 30% 0, #0f172a, #020617);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #e5e7eb;
-      font-family: "Orbitron", system-ui, sans-serif;
-      font-size: 0.85rem;
-      letter-spacing: 0.18em;
+      object-fit: contain;
+      display: block;
     }
 
     .brand-text {
@@ -477,10 +464,7 @@
       .logo-orbit {
         width: 34px;
         height: 34px;
-      }
-
-      .logo-core {
-        font-size: 0.7rem;
+        border-radius: 10px;
       }
 
       .nav-right {
@@ -782,8 +766,8 @@
       border-radius: 1.2rem;
       padding: 0.9rem;
       background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.22), transparent 55%),
-        radial-gradient(circle at 100% 0, rgba(168, 85, 247, 0.22), transparent 55%),
-        rgba(15, 23, 42, 0.96);
+                  radial-gradient(circle at 100% 0, rgba(168, 85, 247, 0.22), transparent 55%),
+                  rgba(15, 23, 42, 0.96);
       border: 1px solid rgba(148, 163, 184, 0.6);
       box-shadow:
         0 18px 60px rgba(15, 23, 42, 0.9),
@@ -907,8 +891,7 @@
       margin-top: 0.2rem;
     }
 
-    th,
-    td {
+    th, td {
       padding: 0.5rem 0.6rem;
       text-align: left;
       border-bottom: 1px solid rgba(51, 65, 85, 0.9);
@@ -1183,8 +1166,9 @@
   <div class="page-shell">
     <header class="navbar">
       <div class="nav-left">
+        <!-- LOGO IMAGE -->
         <div class="logo-orbit">
-          <div class="logo-core">GV</div>
+          <img src="gravityvr-logo.png" alt="Gravity VR logo" class="logo-img" />
         </div>
         <div class="brand-text">
           <div class="brand-title">GRAVITY VR</div>
@@ -1197,7 +1181,7 @@
           <span>FULL-MOTION VR</span>
         </div>
         <div class="nav-pill">
-          <span>RACING · ZOMBIES · FAMILY</span>
+          <span>RACING · ZOMBIES · FAMILY · GAMING</span>
         </div>
       </div>
 
@@ -1216,17 +1200,12 @@
     </header>
 
     <main>
+      <!-- HERO -->
       <section id="top">
         <div class="hero-grid">
           <article class="hero-main">
             <div class="hero-media">
-              <video
-                src="gravity-vr-main.mp4"
-                autoplay
-                muted
-                loop
-                playsinline
-              ></video>
+              <video src="gravity-vr-main.mp4" autoplay muted loop playsinline></video>
             </div>
 
             <div class="hero-content">
@@ -1244,8 +1223,8 @@
               </h1>
 
               <p class="hero-sub t-en">
-                Marrakesh’s ultimate VR &amp; gaming center. Full-motion simulators, VR racing cars and
-                motos, zombie machines, family rides and a gaming zone.
+                Marrakesh’s ultimate VR &amp; gaming center. Full-motion simulators, VR racing cars and motos,
+                zombie machines, family rides and a gaming zone.
               </p>
               <p class="hero-sub t-fr">
                 Le centre VR et gaming ultime de Marrakech. Simulateurs dynamiques, voitures et motos VR,
@@ -1274,13 +1253,7 @@
 
           <aside class="hero-card">
             <div class="hero-card-media">
-              <video
-                src="gravity-vr-main.mp4"
-                autoplay
-                muted
-                loop
-                playsinline
-              ></video>
+              <video src="gravity-vr-main.mp4" autoplay muted loop playsinline></video>
             </div>
             <div class="hero-card-body">
               <h3 class="hero-card-title t-en">Step into a 360° world of motion &amp; sound.</h3>
@@ -1304,6 +1277,7 @@
         </div>
       </section>
 
+      <!-- ATTRACTIONS -->
       <section id="attractions">
         <p class="section-label t-en">The Future is Real</p>
         <p class="section-label t-fr">Le futur est réel</p>
@@ -1416,6 +1390,7 @@
         </div>
       </section>
 
+      <!-- PRICING + GAMING ZONE -->
       <section id="pricing">
         <p class="section-label t-en">Gravity Points System</p>
         <p class="section-label t-fr">Système de points Gravity</p>
@@ -1538,6 +1513,7 @@
           </div>
         </div>
 
+        <!-- GALLERY -->
         <div class="gallery-grid">
           <figure class="gallery-item glass-soft">
             <img
@@ -1613,6 +1589,7 @@
         </div>
       </section>
 
+      <!-- EVENTS + BOOKING -->
       <section id="events">
         <p class="section-label t-en">Gravity Events</p>
         <p class="section-label t-fr">Événements Gravity</p>
@@ -1644,7 +1621,7 @@
               </p>
             </div>
 
-            <!-- زر واضح للحجز عبر واتساب فوق الفورم -->
+            <!-- زر واتساب واضح فوق الفورم -->
             <button type="button" class="btn-outline whatsapp-cta-button" id="whatsappQuick">
               <span class="t-en">Book via WhatsApp</span>
               <span class="t-fr">Réserver via WhatsApp</span>
@@ -1704,6 +1681,7 @@
         </div>
       </section>
 
+      <!-- LOCATION -->
       <section id="location">
         <p class="section-label t-en">Location &amp; Contact</p>
         <p class="section-label t-fr">Adresse &amp; contact</p>
@@ -1715,7 +1693,7 @@
           </p>
           <p class="section-sub t-fr">
             Nous sommes situés dans GRAVITY PARK, Bd de Casablanca. Parking gratuit, accès taxi facile
-            et univers néon à l’intérieur.
+            et univers VR à l’intérieur.
           </p>
         </div>
 
@@ -1790,7 +1768,7 @@
     // Year in footer
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Smooth scroll for buttons
+    // Smooth scroll
     document.querySelectorAll("[data-scroll]").forEach(function (btn) {
       btn.addEventListener("click", function () {
         var target = document.querySelector(btn.getAttribute("data-scroll"));
@@ -1825,7 +1803,7 @@
       document.body.classList.toggle("font-alt");
     });
 
-    // Tabs for games
+    // Tabs for gaming zone
     document.querySelectorAll(".games-tab").forEach(function (tab) {
       tab.addEventListener("click", function () {
         var targetSelector = tab.getAttribute("data-target");
@@ -1843,14 +1821,10 @@
     document.querySelectorAll("video").forEach(function (video) {
       video.muted = true;
       video.setAttribute("playsinline", "true");
-
       try {
         var p = video.play();
-        if (p && p.catch) {
-          p.catch(function () {});
-        }
+        if (p && p.catch) p.catch(function () {});
       } catch (e) {}
-
       if (video.autoplay && video.muted) {
         video.addEventListener("canplay", function () {
           try {
@@ -1861,9 +1835,10 @@
       }
     });
 
-    // WhatsApp booking integration
+    // WhatsApp integration (uses your number)
     (function () {
-      var phoneNumber = "212600000000"; // TODO: ضع رقم الواتساب الحقيقي هنا بدون +
+      // 0603243497  ->  +212 603 243 497
+      var phoneNumber = "212603243497";
 
       function buildBookingMessage() {
         var form = document.querySelector(".booking-form");
@@ -1925,4 +1900,3 @@
   </script>
 </body>
 </html>
-
