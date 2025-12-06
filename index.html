@@ -239,6 +239,10 @@
         0 18px 60px rgba(79, 70, 229, 0.9),
         0 0 0 1px rgba(15, 23, 42, 0.9);
       transition: transform 0.14s ease, box-shadow 0.14s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
     }
 
     .btn-primary:hover {
@@ -246,6 +250,29 @@
       box-shadow:
         0 24px 80px rgba(79, 70, 229, 1),
         0 0 0 1px rgba(15, 23, 42, 0.9);
+    }
+
+    .btn-outline {
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.85);
+      background: rgba(15, 23, 42, 0.92);
+      color: var(--text);
+      font-size: 0.8rem;
+      padding: 0.5rem 1.15rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.15s ease-out;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+    }
+
+    .btn-outline:hover {
+      background: rgba(15, 23, 42, 1);
+      box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.9);
+      transform: translateY(-1px);
     }
 
     .hero {
@@ -257,7 +284,6 @@
       box-shadow:
         0 40px 120px rgba(15, 23, 42, 1),
         0 0 0 1px rgba(15, 23, 42, 1);
-    
       background-image: url("hero-fallback.jpg");
       background-size: cover;
       background-position: center;
@@ -334,25 +360,6 @@
       margin-bottom: 1rem;
     }
 
-    .btn-outline {
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(148, 163, 184, 0.85);
-      background: rgba(15, 23, 42, 0.92);
-      color: var(--text);
-      font-size: 0.8rem;
-      padding: 0.5rem 1.15rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.15s ease-out;
-    }
-
-    .btn-outline:hover {
-      background: rgba(15, 23, 42, 1);
-      box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.9);
-      transform: translateY(-1px);
-    }
-
     .hero-note {
       font-size: 0.8rem;
       color: var(--muted);
@@ -415,6 +422,7 @@
       gap: 1rem;
       align-items: flex-end;
       margin-bottom: 1.6rem;
+      flex-wrap: wrap;
     }
 
     .section-title {
@@ -613,36 +621,10 @@
     }
 
     .booking-form {
-      <form class="booking-form">
-  <div class="form-row">
-    <input class="form-input" type="text" name="name" placeholder="Name / Nom" required />
-    <input class="form-input" type="tel" name="phone" placeholder="Phone / Téléphone" required />
-  </div>
-
-  <div class="form-row">
-    <input class="form-input" type="email" name="email" placeholder="Email" required />
-    <input class="form-input" type="date" name="date" />
-  </div>
-
-  <div class="form-row">
-    <input class="form-input" type="number" name="players" min="1" placeholder="Number of players" />
-    <select class="form-select" name="eventType">
-      <option value="">Event type</option>
-      <option>Birthday</option>
-      <option>Team building</option>
-      <option>Friends night</option>
-      <option>School group</option>
-    </select>
-  </div>
-
-  <textarea class="form-textarea" name="message" placeholder="Tell us what kind of VR experience you want..."></textarea>
-
-  <button class="btn-primary" type="submit">
-    <span class="t-en">Send request</span>
-    <span class="t-fr">Envoyer la demande</span>
-  </button>
-</form>
-
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      margin-top: 0.75rem;
     }
 
     .form-row {
@@ -736,6 +718,8 @@
       animation: fadeUp 0.85s ease-out both;
     }
 
+    /* Responsive tweaks */
+
     @media (max-width: 980px) {
       .hero-inner {
         grid-template-columns: minmax(0, 1fr);
@@ -759,6 +743,17 @@
       .hero-inner {
         padding: 1.7rem 1.4rem 1.6rem;
       }
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn-primary,
+      .btn-outline {
+        width: 100%;
+      }
+      .attractions-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
     }
 
     @media (max-width: 520px) {
@@ -770,72 +765,31 @@
       }
       .form-row {
         grid-template-columns: minmax(0, 1fr);
-      }/* 📱 تحسين عرض الموقع على الموبايل */
-@media (max-width: 768px) {
-  body {
-    font-size: 14px;
-    line-height: 1.5;
-    overflow-x: hidden; /* منع سحب الشاشة يمين/يسار */
-  }
+      }
+    }
 
-  section {
-    padding: 40px 16px;  /* تقليل الهوامش وتوسيط المحتوى */
-  }
+    /* Extra mobile polish */
+    @media (max-width: 768px) {
+      body {
+        font-size: 14px;
+        line-height: 1.5;
+        overflow-x: hidden;
+      }
 
-  header {
-    padding: 12px 16px;
-  }
+      section {
+        margin-top: 2.6rem;
+      }
 
-  header nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
+      header {
+        padding-block: 0.1rem;
+      }
 
-  /* جعل الهيرو والكروت في عمود واحد بدل عمودين */
-  .hero,
-  .hero-inner,
-  .hero-layout,
-  .cards-row,
-  .attractions-row,
-  .pricing-row {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .hero > *,
-  .hero-inner > *,
-  .hero-layout > *,
-  .cards-row > *,
-  .attractions-row > *,
-  .pricing-row > * {
-    width: 100%;
-  }
-
-  /* جعل الفورم أسهل في القراءة */
-  form {
-    max-width: 100%;
-  }
-
-  input,
-  select,
-  textarea,
-  button {
-    font-size: 15px;
-  }
-
-  /* الفيديو والصورة يأخذوا عرض الشاشة */
-  video,
-  .hero-video,
-  .hero-video video {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 14px;
-  }
-}
-
+      video,
+      .hero-video,
+      .hero-video-bg video {
+        width: 100%;
+        height: auto;
+      }
     }
   </style>
 </head>
@@ -877,7 +831,7 @@
   <!-- HERO -->
   <section class="hero fade-up" id="top">
     <div class="hero-video-bg">
-      <!-- Video 1: Hero – start around 2s -->
+      <!-- Video 1: Hero – start around 5s -->
       <video
         id="heroVideo"
         src="gravity-vr-main.mp4"
@@ -885,6 +839,7 @@
         muted
         loop
         playsinline
+        preload="auto"
         poster="hero-fallback.jpg"
       ></video>
     </div>
@@ -930,7 +885,7 @@
       </div>
 
       <aside class="hero-card">
-        <!-- Video 2: mid-page highlight – start around 22s -->
+        <!-- Video 2: mid-page highlight -->
         <video
           id="cardVideo"
           src="gravity-vr-main.mp4"
@@ -938,6 +893,7 @@
           muted
           loop
           playsinline
+          preload="metadata"
           poster="https://uploads.onecompiler.io/446ha97zs/446h9mvmq/WhatsApp%20Image%202025-12-03%20at%2019.55.14%20(5).jpeg"
         ></video>
         <div class="hero-card-body">
@@ -1113,7 +1069,7 @@
         <figcaption class="gallery-label">VR motos</figcaption>
       </figure>
 
-      <!-- Video tile (Video 3 small card – start around 45s) -->
+      <!-- Video tile (Video 3 small card) -->
       <figure class="gallery-item glass-soft">
         <video
           id="galleryVideo"
@@ -1122,6 +1078,7 @@
           muted
           loop
           playsinline
+          preload="metadata"
           poster="https://uploads.onecompiler.io/446ha97zs/446h9mvmq/WhatsApp%20Image%202025-12-03%20at%2019.55.14.jpeg"
         ></video>
         <div class="gallery-play-icon"><span></span></div>
@@ -1317,7 +1274,19 @@
           </p>
         </div>
 
-        <form class="booking-form" onsubmit="event.preventDefault(); alert('Thank you! We will contact you shortly. / Merci ! Nous vous contacterons rapidement.');">
+        <!-- زر واضح للحجز عبر واتساب -->
+        <div style="padding: 0 1rem 0.25rem;">
+          <button class="btn-primary" type="button" id="whatsappQuick">
+            <span class="t-en">Book via WhatsApp</span>
+            <span class="t-fr">Réserver sur WhatsApp</span>
+          </button>
+          <p class="attr-text" style="margin-top:0.4rem;">
+            <span class="t-en">Fast reply on WhatsApp for events, birthdays and groups.</span>
+            <span class="t-fr">Réponse rapide sur WhatsApp pour événements, anniversaires et groupes.</span>
+          </p>
+        </div>
+
+        <form class="booking-form">
           <div class="form-row">
             <input class="form-input" type="text" name="name" placeholder="Name / Nom" required />
             <input class="form-input" type="tel" name="phone" placeholder="Phone / Téléphone" required />
@@ -1353,13 +1322,14 @@
         <p class="attr-text t-fr">
           Un aperçu de Gravity VR en mouvement. Utilisez cette vidéo dans le centre sur les écrans ou QR codes.
         </p>
-        <!-- Big video at bottom – user-controlled, seeks to later moment -->
+        <!-- Big video at bottom – user-controlled -->
         <video
           id="bottomVideo"
           src="gravity-vr-main.mp4"
           muted
           controls
           playsinline
+          preload="metadata"
           poster="https://uploads.onecompiler.io/446ha97zs/446h9mvmq/WhatsApp%20Image%202025-12-03%20at%2019.55.15%20(1).jpeg"
         ></video>
       </div>
@@ -1426,138 +1396,146 @@
       <span class="t-fr">Tous droits réservés.</span>
     </div>
     <div>
-      <span class="t-en">Made for starlit-bublanina-29653c.netlify.app</span>
-      <span class="t-fr">Site publié sur starlit-bublanina-29653c.netlify.app</span>
+      <span class="t-en">Site hosted on GitHub Pages</span>
+      <span class="t-fr">Site hébergé sur GitHub Pages</span>
     </div>
   </div>
 </footer>
 
 <script>
-  <script>
-  // Send booking info to WhatsApp
+  // WhatsApp helpers
+  function buildWhatsAppMessage(form) {
+    var name = form.querySelector('input[name="name"]')?.value || "";
+    var phone = form.querySelector('input[name="phone"]')?.value || "";
+    var email = form.querySelector('input[name="email"]')?.value || "";
+    var date = form.querySelector('input[name="date"]')?.value || "";
+    var players = form.querySelector('input[name="players"]')?.value || "";
+    var eventType = form.querySelector('select[name="eventType"]')?.value || "";
+    var message = form.querySelector('textarea[name="message"]')?.value || "";
+
+    var fullMessage =
+      "New Gravity VR booking:" + "\n" +
+      "Name: " + name + "\n" +
+      "Phone: " + phone + "\n" +
+      "Email: " + email + "\n" +
+      "Date: " + date + "\n" +
+      "Players: " + players + "\n" +
+      "Event type: " + eventType + "\n" +
+      "Message: " + message;
+
+    return fullMessage;
+  }
+
+  function openWhatsAppWithMessage(message) {
+    var whatsappNumber = "212603243497"; // رقم Gravity VR
+    var url = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(message);
+    window.open(url, "_blank");
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
-    var bookingForm = document.querySelector(".booking-form");
-    if (!bookingForm) return;
+    // Year in footer
+    var yearEl = document.getElementById("year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    bookingForm.addEventListener("submit", function (e) {
-      e.preventDefault(); // ما نخليهش الفورم يدير refresh
-
-      var nameInput = bookingForm.querySelector('input[name="name"]');
-      var phoneInput = bookingForm.querySelector('input[name="phone"]');
-      var emailInput = bookingForm.querySelector('input[name="email"]');
-      var dateInput = bookingForm.querySelector('input[name="date"]');
-      var playersInput = bookingForm.querySelector('input[name="players"]');
-      var eventTypeSelect = bookingForm.querySelector('select[name="eventType"]');
-      var messageTextarea = bookingForm.querySelector('textarea[name="message"]');
-
-      var name = nameInput ? nameInput.value : "";
-      var phone = phoneInput ? phoneInput.value : "";
-      var email = emailInput ? emailInput.value : "";
-      var date = dateInput ? dateInput.value : "";
-      var players = playersInput ? playersInput.value : "";
-      var eventType = eventTypeSelect ? eventTypeSelect.value : "";
-      var message = messageTextarea ? messageTextarea.value : "";
-
-      // النص اللي غادي يوصلك في واتساب
-      var fullMessage =
-        "New Gravity VR booking:" + "\n" +
-        "Name: " + name + "\n" +
-        "Phone: " + phone + "\n" +
-        "Email: " + email + "\n" +
-        "Date: " + date + "\n" +
-        "Players: " + players + "\n" +
-        "Event type: " + eventType + "\n" +
-        "Message: " + message;
-
-      // رقم الواتساب ديالك (بدون + وبدون فراغات)
-      var whatsappNumber = "212603243497"; // +212 603 243 497
-
-      var url = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(fullMessage);
-
-      // فتح واتساب (تطبيق في الهاتف أو WhatsApp Web في الحاسوب)
-      window.open(url, "_blank");
+    // Smooth scroll for buttons
+    document.querySelectorAll("[data-scroll]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var target = document.querySelector(btn.getAttribute("data-scroll"));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: "smooth",
+          });
+        }
+      });
     });
-  });
-</script>
 
-  // Year in footer
-  document.getElementById("year").textContent = new Date().getFullYear();
+    // Language switch
+    var langButtons = document.querySelectorAll(".lang-btn");
+    langButtons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var lang = btn.dataset.lang;
+        document.documentElement.lang = lang === "fr" ? "fr" : "en";
+        document.body.classList.toggle("lang-fr", lang === "fr");
+        langButtons.forEach(function (b) {
+          b.classList.toggle("active", b === btn);
+        });
+      });
+    });
 
-  // Smooth scroll for buttons
-  document.querySelectorAll("[data-scroll]").forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      var target = document.querySelector(btn.getAttribute("data-scroll"));
-      if (target) {
-        window.scrollTo({
-          top: target.offsetTop - 80,
-          behavior: "smooth",
+    // Font toggle
+    var fontToggle = document.getElementById("fontToggle");
+    if (fontToggle) {
+      fontToggle.addEventListener("click", function () {
+        document.body.classList.toggle("font-alt");
+      });
+    }
+
+    // Tabs for games
+    var tabButtons = document.querySelectorAll(".games-tab-btn");
+    var panels = document.querySelectorAll(".games-panel");
+    tabButtons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var id = btn.dataset.tab;
+        tabButtons.forEach(function (b) {
+          b.classList.toggle("active", b === btn);
+        });
+        panels.forEach(function (panel) {
+          panel.classList.toggle("active", panel.id === id);
+        });
+      });
+    });
+
+    // Booking form → WhatsApp
+    var bookingForm = document.querySelector(".booking-form");
+    if (bookingForm) {
+      bookingForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var msg = buildWhatsAppMessage(bookingForm);
+        openWhatsAppWithMessage(msg);
+      });
+    }
+
+    // Quick WhatsApp button
+    var whatsappQuick = document.getElementById("whatsappQuick");
+    if (whatsappQuick && bookingForm) {
+      whatsappQuick.addEventListener("click", function () {
+        var msg = buildWhatsAppMessage(bookingForm);
+        if (!msg.trim()) {
+          msg = "Hello Gravity VR, I would like to book a VR session / event.";
+        }
+        openWhatsAppWithMessage(msg);
+      });
+    }
+
+    // Re-use same video with different start times
+    var videoOffsets = {
+      heroVideo: 5,
+      cardVideo: 0,
+      galleryVideo: 30,
+      bottomVideo: 60
+    };
+
+    Object.keys(videoOffsets).forEach(function (id) {
+      var video = document.getElementById(id);
+      if (!video) return;
+      var offset = videoOffsets[id];
+
+      video.addEventListener("loadedmetadata", function () {
+        try {
+          if (video.duration > offset) {
+            video.currentTime = offset;
+          }
+        } catch (e) {}
+      });
+
+      if (video.autoplay && video.muted) {
+        video.addEventListener("canplay", function () {
+          var p = video.play();
+          if (p && p.catch) p.catch(function () {});
         });
       }
     });
-  });
-
-  // Language switch
-  var langButtons = document.querySelectorAll(".lang-btn");
-  langButtons.forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      var lang = btn.dataset.lang;
-      document.documentElement.lang = lang === "fr" ? "fr" : "en";
-      document.body.classList.toggle("lang-fr", lang === "fr");
-      langButtons.forEach(function (b) {
-        b.classList.toggle("active", b === btn);
-      });
-    });
-  });
-
-  // Font toggle
-  document.getElementById("fontToggle").addEventListener("click", function () {
-    document.body.classList.toggle("font-alt");
-  });
-
-  // Tabs for games
-  var tabButtons = document.querySelectorAll(".games-tab-btn");
-  var panels = document.querySelectorAll(".games-panel");
-  tabButtons.forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      var id = btn.dataset.tab;
-      tabButtons.forEach(function (b) {
-        b.classList.toggle("active", b === btn);
-      });
-      panels.forEach(function (panel) {
-        panel.classList.toggle("active", panel.id === id);
-      });
-    });
-  });
-
-  // Re-use same video with different start times
-  var videoOffsets = {
-    heroVideo: 5,
-    cardVideo: 0,
-    galleryVideo: 30,
-    bottomVideo: 60
-  };
-
-  Object.keys(videoOffsets).forEach(function (id) {
-    var video = document.getElementById(id);
-    if (!video) return;
-
-    var offset = videoOffsets[id];
-
-    video.addEventListener("loadedmetadata", function () {
-      try {
-        if (video.duration > offset) {
-          video.currentTime = offset;
-        }
-      } catch (e) {}
-    });
-
-    // For autoplay videos, ensure they start
-    if (video.autoplay && video.muted) {
-      video.addEventListener("canplay", function () {
-        var p = video.play();
-        if (p && p.catch) p.catch(function () {});
-      });
-    }
   });
 </script>
 </body>
