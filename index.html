@@ -1,157 +1,1910 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>GRAVITY VR MARRAKESH</title>
+  <meta charset="UTF-8" />
+  <title>GRAVITY VR | Marrakesh - VR & Gaming Center</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+        content="GRAVITY VR in Marrakesh – VR racing, 360° rides, zombie machines, family attractions and a gaming zone." />
 
-<style>
-/* --------------------------------------------- */
-/* BASE DESIGN (NO CHANGES) */
-/* --------------------------------------------- */
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700&family=Rubik:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
 
-body {
-  margin: 0;
-  background: #0b0f1a;
-  font-family: Arial, sans-serif;
-  color: white;
-  overflow-x: hidden;
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-soft: rgba(15, 23, 42, 0.96);
+      --bg-glass: rgba(15, 23, 42, 0.8);
+      --bg-hero: radial-gradient(circle at top, #1d283a 0, #020617 55%, #020617 100%);
+      --accent: #4f46e5;
+      --accent-soft: rgba(79, 70, 229, 0.24);
+      --accent-2: #22d3ee;
+      --accent-3: #f97316;
+      --accent-4: #a855f7;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --muted-soft: #6b7280;
+      --border-subtle: rgba(148, 163, 184, 0.55);
+      --radius-xl: 1.5rem;
+      --radius-lg: 1.1rem;
+      --radius-pill: 999px;
+      --shadow-soft: 0 26px 80px rgba(15, 23, 42, 0.96);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: "Rubik", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.18), transparent 55%),
+                  radial-gradient(circle at 80% 0, rgba(168, 85, 247, 0.18), transparent 55%),
+                  var(--bg-hero);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(15, 23, 42, 0.9),
+        rgba(15, 23, 42, 0.85),
+        rgba(15, 23, 42, 0.95)
+      );
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 10% 0%, rgba(56, 189, 248, 0.23), transparent 50%),
+        radial-gradient(circle at 90% 0%, rgba(168, 85, 247, 0.23), transparent 50%);
+      mix-blend-mode: screen;
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .page-shell {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.75rem 1.4rem 4rem;
+    }
+
+    @media (min-width: 1200px) {
+      .page-shell {
+        max-width: 1180px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .page-shell {
+        padding: 1.1rem 0.9rem 3rem;
+      }
+    }
+
+    body.font-alt {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI",
+        sans-serif;
+    }
+
+    .gradient-ring {
+      position: fixed;
+      inset: -180px;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(59, 130, 246, 0.15), transparent 60%),
+        radial-gradient(circle at 90% 0%, rgba(34, 211, 238, 0.18), transparent 60%),
+        radial-gradient(circle at 50% 100%, rgba(147, 51, 234, 0.18), transparent 60%);
+      opacity: 0.9;
+      mix-blend-mode: screen;
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      background-image: linear-gradient(
+          rgba(148, 163, 184, 0.08) 1px,
+          rgba(15, 23, 42, 0.92) 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(148, 163, 184, 0.08) 1px,
+          rgba(15, 23, 42, 0.92) 1px
+        );
+      background-size: 80px 80px;
+      opacity: 0.25;
+      mask-image: radial-gradient(circle at top, black 0, transparent 70%);
+      pointer-events: none;
+      z-index: -3;
+    }
+
+    .glass {
+      backdrop-filter: blur(20px);
+      background: linear-gradient(
+        135deg,
+        rgba(15, 23, 42, 0.92),
+        rgba(15, 23, 42, 0.95),
+        rgba(15, 23, 42, 0.98)
+      );
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      box-shadow:
+        0 22px 70px rgba(15, 23, 42, 0.95),
+        0 0 0 1px rgba(15, 23, 42, 1);
+    }
+
+    .glass-soft {
+      backdrop-filter: blur(18px);
+      background: radial-gradient(
+          circle at 0 0,
+          rgba(56, 189, 248, 0.2),
+          transparent 60%
+        ),
+        radial-gradient(
+          circle at 100% 0,
+          rgba(168, 85, 247, 0.2),
+          transparent 60%
+        ),
+        rgba(15, 23, 42, 0.94);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .glass-soft-alt {
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        145deg,
+        rgba(15, 23, 42, 0.98),
+        rgba(15, 23, 42, 0.94)
+      );
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      box-shadow:
+        0 22px 60px rgba(15, 23, 42, 0.95),
+        0 0 0 1px rgba(15, 23, 42, 0.95);
+    }
+
+    .text-gradient {
+      background: linear-gradient(
+        120deg,
+        #22d3ee 0%,
+        #4f46e5 40%,
+        #a855f7 70%,
+        #f97316 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.28rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: radial-gradient(
+          circle at 0 0,
+          rgba(56, 189, 248, 0.22),
+          transparent 55%
+        ),
+        rgba(15, 23, 42, 0.92);
+    }
+
+    header.navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.1rem;
+      padding: 0.9rem 1.2rem;
+      border-radius: 999px;
+      margin-bottom: 1.4rem;
+      backdrop-filter: blur(20px);
+      background: linear-gradient(
+        120deg,
+        rgba(15, 23, 42, 0.96),
+        rgba(15, 23, 42, 0.9)
+      );
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      box-shadow:
+        0 12px 40px rgba(15, 23, 42, 0.95),
+        0 0 0 1px rgba(15, 23, 42, 0.98);
+      position: sticky;
+      top: 0.75rem;
+      z-index: 20;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      min-width: 0;
+    }
+
+    /* LOGO CONTAINER + IMAGE */
+    .logo-orbit {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      overflow: hidden;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+}
+}
+    }
+
+    .logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .brand-title {
+      font-family: "Orbitron", system-ui, sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .brand-sub {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .nav-center {
+      display: flex;
+      gap: 0.3rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav-pill {
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      background: radial-gradient(
+        circle at 0 0,
+        rgba(148, 163, 184, 0.26),
+        rgba(15, 23, 42, 0.96)
+      );
+      padding: 0.35rem 0.9rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .lang-toggle {
+      display: inline-flex;
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: 999px;
+      padding: 0.18rem;
+      border: 1px solid rgba(148, 163, 184, 0.65);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .lang-pill {
+      position: absolute;
+      inset-block: 2px;
+      width: 50%;
+      border-radius: 999px;
+      background: radial-gradient(
+          circle at 0 0,
+          rgba(56, 189, 248, 0.5),
+          transparent 55%
+        ),
+        rgba(15, 23, 42, 0.98);
+      border: 1px solid rgba(59, 130, 246, 0.7);
+      transform: translateX(0);
+      transition: transform 0.25s ease-out;
+      z-index: 0;
+    }
+
+    .lang-toggle.lang-fr .lang-pill {
+      transform: translateX(100%);
+    }
+
+    .lang-btn {
+      position: relative;
+      z-index: 1;
+      border-radius: 999px;
+      border: none;
+      padding: 0.28rem 0.6rem;
+      background: transparent;
+      color: var(--muted);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      cursor: pointer;
+    }
+
+    .lang-btn.active {
+      color: #e5e7eb;
+    }
+
+    .font-toggle {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.65);
+      background: rgba(15, 23, 42, 0.96);
+      color: var(--muted);
+      padding: 0.3rem 0.7rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      border-radius: 999px;
+      border: none;
+      background: radial-gradient(
+          circle at 0 0,
+          rgba(56, 189, 248, 0.35),
+          transparent 55%
+        ),
+        linear-gradient(120deg, #22d3ee, #4f46e5, #a855f7);
+      color: #020617;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.55rem 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow:
+        0 12px 36px rgba(15, 23, 42, 0.9),
+        0 0 0 1px rgba(15, 23, 42, 0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      white-space: nowrap;
+      transition: all 0.16s ease-out;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+      box-shadow:
+        0 18px 44px rgba(15, 23, 42, 0.95),
+        0 0 0 1px rgba(15, 23, 42, 1);
+    }
+
+    .btn-outline {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.96);
+      color: var(--text);
+      font-size: 0.72rem;
+      padding: 0.5rem 1.15rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.15s ease-out;
+    }
+
+    .btn-outline:hover {
+      background: rgba(15, 23, 42, 1);
+      box-shadow: 0 0 0 1px rgba(148, 163, 184, 0.9);
+      transform: translateY(-1px);
+    }
+
+    .hero-note {
+      margin-top: 0.85rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-note span {
+      opacity: 0.85;
+    }
+
+    @media (max-width: 768px) {
+     @media (max-width: 768px) {
+      header.navbar {
+        padding: 0.7rem 0.8rem;
+        border-radius: 999px;
+        margin-bottom: 1.2rem;
+        gap: 0.6rem;
+      }
+
+      .nav-center {
+        display: none;
+      }
+
+      .brand-title {
+        font-size: 0.8rem;
+        letter-spacing: 0.18em;
+      }
+
+      .brand-sub {
+        font-size: 0.62rem;
+      }
+
+      /* لوجو أكبر على الموبايل */
+      .logo-orbit {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+      }
+
+      .nav-right {
+        gap: 0.4rem;
+      }
+
+      .font-toggle {
+        display: none;
+      }
+
+      /* تصغير زر BOOK NOW في الهيدر فقط */
+      .navbar .btn-primary {
+        padding: 0.35rem 0.7rem;
+        font-size: 0.62rem;
+        letter-spacing: 0.14em;
+      }
 }
 
-header.navbar {
-  width: calc(100% - 2rem);
-  margin: 1rem auto;
-  padding: 1rem 1.5rem;
-  background: rgba(255,255,255,0.05);
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  backdrop-filter: blur(10px);
-}
+      }
+    }
 
-.logo-orbit {
-  width: 48px;   /* تكبير اللوجو */
-  height: 48px;
-  border-radius: 14px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.15fr);
+      gap: 1rem;
+      align-items: stretch;
+    }
 
-.logo-orbit img {
-  width: 100%;
-}
+    @media (max-width: 960px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
 
-.nav-left {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-}
+    .hero-main {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.22), transparent 55%),
+        radial-gradient(circle at top right, rgba(168, 85, 247, 0.22), transparent 55%),
+        rgba(15, 23, 42, 0.96);
+    }
 
-.brand-title {
-  font-size: 1.1rem;
-  letter-spacing: 0.22em;
-}
+    .hero-media {
+      position: relative;
+      overflow: hidden;
+      min-height: 220px;
+    }
 
-.brand-sub {
-  font-size: 0.75rem;
-  opacity: 0.8;
-}
+    .hero-media video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      filter: saturate(1.1) contrast(1.06);
+    }
 
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-}
+    .hero-media::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          to top,
+          rgba(15, 23, 42, 1) 0%,
+          rgba(15, 23, 42, 0.92) 12%,
+          transparent 55%
+        ),
+        radial-gradient(
+          circle at 0 0,
+          rgba(56, 189, 248, 0.35),
+          transparent 55%
+        );
+      pointer-events: none;
+    }
 
-.language-toggle,
-.font-toggle,
-.btn-primary {
-  padding: 0.45rem 1rem;
-  border-radius: 40px;
-  border: none;
-  cursor: pointer;
-}
+    .hero-content {
+      padding: 1.1rem 1.2rem 1.2rem;
+      position: relative;
+    }
 
-.btn-primary {
-  background: linear-gradient(90deg, #3fb3ff, #5f4dff);
-  color: white;
-  font-weight: bold;
-  letter-spacing: 0.2em;
-}
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--muted);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
 
-/* --------------------------------------------- */
-/* MOBILE FIXES — BOOK NOW smaller + logo bigger */
-/* --------------------------------------------- */
+    .hero-kicker-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #22d3ee, #4f46e5);
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.8);
+    }
 
-@media (max-width: 768px) {
-  .logo-orbit {
-    width: 40px;  /* أكبر من قبل */
-    height: 40px;
-    border-radius: 12px;
-  }
+    .hero-title {
+      font-family: "Orbitron", system-ui, sans-serif;
+      font-size: 1.65rem;
+      line-height: 1.08;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
 
-  .navbar .btn-primary {
-    padding: 0.35rem 0.7rem;
-    font-size: 0.62rem;
-    letter-spacing: 0.14em;
-  }
+    .hero-title span {
+      font-size: 1.75rem;
+    }
 
-  .nav-center {
-    display: none; /* حذف السطور داخل الهاتف */
-  }
-}
+    .hero-sub {
+      font-size: 0.92rem;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.7;
+    }
 
-/* --------------------------------------------- */
-/* MAIN HERO */
-/* --------------------------------------------- */
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.9rem;
+    }
 
-.hero-section {
-  width: 90%;
-  margin: auto;
-  margin-top: 1rem;
-  border-radius: 30px;
-  overflow: hidden;
-  background: #111;
-  position: relative;
-}
+    @media (max-width: 768px) {
+      .hero-main {
+        border-radius: 1.4rem;
+      }
 
-.hero-section img {
-  width: 100%;
-  display: block;
-}
+      .hero-content {
+        padding: 0.9rem 0.9rem 1.1rem;
+      }
 
-/* --------------------------------------------- */
+      .hero-title {
+        font-size: 1.05rem;
+        letter-spacing: 0.2em;
+      }
 
-</style>
+      .hero-title span {
+        font-size: 1.2rem;
+      }
+
+      .hero-sub {
+        font-size: 0.86rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn-primary,
+      .btn-outline {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .hero-note {
+        font-size: 0.74rem;
+      }
+    }
+
+    .hero-card {
+      border-radius: 1.5rem;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      background: rgba(15, 23, 42, 0.95);
+      box-shadow:
+        0 22px 70px rgba(15, 23, 42, 1),
+        0 0 0 1px rgba(15, 23, 42, 1);
+      overflow: hidden;
+      animation: fadeUp 0.85s ease-out both;
+      animation-delay: 0.25s;
+    }
+
+    .hero-card-media {
+      position: relative;
+      overflow: hidden;
+      height: 190px;
+    }
+
+    .hero-card-media video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.05) contrast(1.04);
+    }
+
+    .hero-card-media::after {
+      content: "REAL FOOTAGE · GRAVITY VR";
+      position: absolute;
+      left: 0.85rem;
+      bottom: 0.75rem;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      color: var(--muted);
+    }
+
+    .hero-card-body {
+      padding: 0.85rem 0.95rem 1rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .hero-card-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+      color: var(--text);
+    }
+
+    .hero-card-meta {
+      margin-top: 0.55rem;
+      font-size: 0.78rem;
+      color: var(--muted-soft);
+    }
+
+    @media (max-width: 960px) {
+      .hero-card {
+        margin-top: 0.5rem;
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    main {
+      margin-top: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.1rem;
+    }
+
+    section {
+      margin-top: 0.4rem;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-title {
+      font-size: 1.05rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 620px;
+      line-height: 1.7;
+    }
+
+    .section-header {
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .section-title {
+        font-size: 0.95rem;
+        letter-spacing: 0.2em;
+      }
+
+      .section-sub {
+        font-size: 0.84rem;
+      }
+    }
+
+    .attractions-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .attr-card {
+      border-radius: 1.2rem;
+      padding: 0.9rem;
+      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.22), transparent 55%),
+                  radial-gradient(circle at 100% 0, rgba(168, 85, 247, 0.22), transparent 55%),
+                  rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      box-shadow:
+        0 18px 60px rgba(15, 23, 42, 0.9),
+        0 0 0 1px rgba(15, 23, 42, 0.98);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .attr-header {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .attr-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 0.9rem;
+      background: radial-gradient(
+        circle at 20% 0,
+        rgba(248, 250, 252, 0.6),
+        transparent 55%
+      );
+      box-shadow:
+        0 0 0 1px rgba(15, 23, 42, 0.9),
+        0 8px 20px rgba(15, 23, 42, 0.9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .attr-icon::after {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      border-radius: 0.7rem;
+      background: radial-gradient(circle at 0 0, #22d3ee, #4f46e5);
+      opacity: 0.85;
+      mix-blend-mode: screen;
+    }
+
+    .attr-title {
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .attr-text {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .attr-meta {
+      margin-top: 0.4rem;
+      font-size: 0.78rem;
+      color: var(--muted-soft);
+    }
+
+    .attr-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.35rem;
+    }
+
+    .attr-chip {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      padding: 0.25rem 0.55rem;
+      font-size: 0.7rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 768px) {
+      .attractions-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 880px) {
+      .two-col {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .pricing-card {
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: linear-gradient(
+        145deg,
+        rgba(15, 23, 42, 0.98),
+        rgba(15, 23, 42, 0.94)
+      );
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .pricing-header {
+      padding: 1rem 1.1rem 0.6rem;
+      border-bottom: 1px solid rgba(51, 65, 85, 0.9);
+    }
+
+    .pricing-sub {
+      font-size: 0.86rem;
+      color: var(--muted);
+      margin-top: 0.35rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin-top: 0.2rem;
+    }
+
+    th, td {
+      padding: 0.5rem 0.6rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(51, 65, 85, 0.9);
+    }
+
+    th {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    tr:nth-child(even) td {
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .booking-form {
+      display: grid;
+      gap: 0.8rem;
+      padding: 0.3rem 0.8rem 0.9rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.7rem;
+    }
+
+    .form-input,
+    .form-textarea,
+    .form-select {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      border-radius: 0.85rem;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(55, 65, 81, 0.98);
+      color: var(--text);
+      font-size: 0.84rem;
+    }
+
+    .form-textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus,
+    .form-select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(79, 70, 229, 0.8);
+    }
+
+    .booking-form button[type="submit"] {
+      margin-top: 0.3rem;
+      width: 100%;
+      justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+      .form-row {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .booking-form {
+        padding-inline: 0.3rem;
+      }
+    }
+
+    .games-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .games-tab {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.96);
+      font-size: 0.72rem;
+      color: var(--muted);
+      padding: 0.32rem 0.7rem;
+      cursor: pointer;
+    }
+
+    .games-tab.active {
+      background: radial-gradient(
+          circle at 0 0,
+          rgba(56, 189, 248, 0.3),
+          transparent 55%
+        ),
+        rgba(15, 23, 42, 1);
+      color: var(--text);
+      border-color: rgba(56, 189, 248, 0.8);
+    }
+
+    .games-panel {
+      display: none;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .games-panel.active {
+      display: block;
+    }
+
+    .games-list {
+      margin-top: 0.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+
+    .games-list span {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.65);
+      padding: 0.25rem 0.55rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .gallery-grid {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .gallery-item {
+      border-radius: 1rem;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      display: block;
+      filter: saturate(1.08) contrast(1.04);
+    }
+
+    .gallery-label {
+      position: absolute;
+      left: 0.65rem;
+      bottom: 0.6rem;
+      padding: 0.25rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .gallery-item img {
+        height: 170px;
+      }
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 880px) {
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .map-embed {
+      border-radius: 1.2rem;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      min-height: 260px;
+      background: #020617;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    footer {
+      margin-top: 2.2rem;
+      padding-top: 1.1rem;
+      border-top: 1px solid rgba(31, 41, 55, 1);
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .footer-links a {
+      color: var(--muted-soft);
+      text-decoration: none;
+      font-size: 0.78rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-2);
+    }
+
+    .t-fr {
+      display: none;
+    }
+
+    body.lang-fr .t-en {
+      display: none;
+    }
+
+    body.lang-fr .t-fr {
+      display: block;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .whatsapp-cta-button {
+      margin: 0.6rem 0.8rem 0.1rem;
+      width: calc(100% - 1.6rem);
+      display: inline-flex;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .whatsapp-cta-button::before {
+      content: "💬";
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .whatsapp-cta-button {
+        width: 100%;
+        margin-inline: 0;
+        margin-bottom: 0.3rem;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="gradient-ring"></div>
+  <div class="grid-overlay"></div>
 
-<header class="navbar">
-  <div class="nav-left">
-      <div class="logo-orbit">
-          <img src="logo.png" alt="GRAVITY VR" />
-      </div>
-      <div>
+  <div class="page-shell">
+    <header class="navbar">
+      <div class="nav-left">
+        <!-- LOGO IMAGE -->
+        <div class="logo-orbit">
+          <img src="gravityvr-logo.png" alt="Gravity VR logo" class="logo-img" />
+        </div>
+        <div class="brand-text">
           <div class="brand-title">GRAVITY VR</div>
-          <div class="brand-sub">MARRAKESH · VR & GAMING CENTER</div>
+          <div class="brand-sub">MARRAKESH · VR &amp; GAMING CENTER</div>
+        </div>
       </div>
+
+      <div class="nav-center">
+        <div class="nav-pill">
+          <span>FULL-MOTION VR</span>
+        </div>
+        <div class="nav-pill">
+          <span>RACING · ZOMBIES · FAMILY · GAMING</span>
+        </div>
+      </div>
+
+      <div class="nav-right">
+        <div class="lang-toggle" id="langToggle">
+          <div class="lang-pill"></div>
+          <button type="button" class="lang-btn active" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="fr">FR</button>
+        </div>
+        <button type="button" class="font-toggle" id="fontToggle">Font</button>
+        <button class="btn-primary" data-scroll="#booking">
+          <span class="t-en">Book Now</span>
+          <span class="t-fr">Réserver</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section id="top">
+        <div class="hero-grid">
+          <article class="hero-main">
+            <div class="hero-media">
+              <video src="gravity-vr-main.mp4" autoplay muted loop playsinline></video>
+            </div>
+
+            <div class="hero-content">
+              <div class="hero-kicker">
+                <span class="hero-kicker-dot"></span>
+                <span class="t-en">Inside GRAVITY PARK · Bd de Casablanca</span>
+                <span class="t-fr">Au sein de GRAVITY PARK · Bd de Casablanca</span>
+              </div>
+
+              <h1 class="hero-title t-en">
+                WORLDS TO LIVE, NOT JUST TO <span class="text-gradient">SEE.</span>
+              </h1>
+              <h1 class="hero-title t-fr">
+                DES MONDES À VIVRE, PAS JUSTE À <span class="text-gradient">VOIR.</span>
+              </h1>
+
+              <p class="hero-sub t-en">
+                Marrakesh’s ultimate VR &amp; gaming center. Full-motion simulators, VR racing cars and motos,
+                zombie machines, family rides and a gaming zone.
+              </p>
+              <p class="hero-sub t-fr">
+                Le centre VR et gaming ultime de Marrakech. Simulateurs dynamiques, voitures et motos VR,
+                machines zombies, attractions familiales et zone gaming.
+              </p>
+
+              <div class="hero-actions">
+                <button class="btn-primary" data-scroll="#pricing">
+                  <span class="t-en">See pricing</span>
+                  <span class="t-fr">Voir les tarifs</span>
+                </button>
+                <button class="btn-outline" data-scroll="#attractions">
+                  <span class="t-en">Explore Attractions</span>
+                  <span class="t-fr">Voir les attractions</span>
+                </button>
+              </div>
+
+              <p class="hero-note t-en">
+                Tue–Sun · 12:00 – 23:00 · Closed Monday · HXPQ+X4W GRAVITY PARK, Bd de Casablanca, Marrakech 40000
+              </p>
+              <p class="hero-note t-fr">
+                Mar–Dim · 12h00 – 23h00 · Fermé le lundi · HXPQ+X4W GRAVITY PARK, Bd de Casablanca, Marrakech 40000
+              </p>
+            </div>
+          </article>
+
+          <aside class="hero-card">
+            <div class="hero-card-media">
+              <video src="gravity-vr-main.mp4" autoplay muted loop playsinline></video>
+            </div>
+            <div class="hero-card-body">
+              <h3 class="hero-card-title t-en">Step into a 360° world of motion &amp; sound.</h3>
+              <h3 class="hero-card-title t-fr">Entrez dans un monde 360° de mouvement et de son.</h3>
+              <p class="t-en">
+                Real footage from inside Gravity VR: cars, motos, coasters, zombie machines and family
+                rides — perfect for birthdays, groups and team-building.
+              </p>
+              <p class="t-fr">
+                Images réelles de Gravity VR : voitures et motos VR, coasters, machines zombies et
+                attractions familiales — idéal pour anniversaires, groupes et team-building.
+              </p>
+              <p class="hero-card-meta t-en">
+                Staff on-site to guide first timers · Inside Gravity Park · Free parking.
+              </p>
+              <p class="hero-card-meta t-fr">
+                Équipe sur place pour accompagner les débutants · Au sein de Gravity Park · Parking gratuit.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ATTRACTIONS -->
+      <section id="attractions">
+        <p class="section-label t-en">The Future is Real</p>
+        <p class="section-label t-fr">Le futur est réel</p>
+
+        <div class="section-header">
+          <h2 class="section-title t-en">Our Attractions</h2>
+          <h2 class="section-title t-fr">Nos attractions</h2>
+          <p class="section-sub t-en">
+            Experience total immersion powered by the best VR technology and full-motion simulators.
+            Perfect for solo players, families and groups.
+          </p>
+          <p class="section-sub t-fr">
+            Une immersion totale grâce à la meilleure technologie VR et à des simulateurs dynamiques.
+            Parfait pour joueurs solo, familles et groupes.
+          </p>
+        </div>
+
+        <div class="attractions-grid glass-soft">
+          <article class="attr-card">
+            <div class="attr-header">
+              <div class="attr-icon"></div>
+              <div>
+                <h3 class="attr-title t-en">Motion VR cars &amp; motos</h3>
+                <h3 class="attr-title t-fr">Voitures &amp; motos VR</h3>
+              </div>
+            </div>
+            <p class="attr-text t-en">
+              Take the wheel in futuristic racing pods and VR motos. Drift, boost and compete with
+              your friends on neon tracks that feel like you’re inside the game.
+            </p>
+            <p class="attr-text t-fr">
+              Prenez le volant dans des pods futuristes et motos VR. Drifts, boosts et compétitions
+              sur des circuits lumineux qui donnent l’impression d’être dans le jeu.
+            </p>
+            <div class="attr-chips">
+              <span class="attr-chip">Racing</span>
+              <span class="attr-chip">Time attack</span>
+              <span class="attr-chip">Head-to-head</span>
+            </div>
+          </article>
+
+          <article class="attr-card">
+            <div class="attr-header">
+              <div class="attr-icon"></div>
+              <div>
+                <h3 class="attr-title t-en">Extreme 360° rides</h3>
+                <h3 class="attr-title t-fr">Attractions extrêmes 360°</h3>
+              </div>
+            </div>
+            <p class="attr-text t-en">
+              Drop, spin and fly through coasters and free-fall rides in full-motion simulators. Feel
+              every turn, drop and acceleration.
+            </p>
+            <p class="attr-text t-fr">
+              Chutes, rotations et vols dans des montagnes russes et attractions à sensations fortes
+              avec simulateurs à mouvement complet.
+            </p>
+            <div class="attr-chips">
+              <span class="attr-chip">360° domes</span>
+              <span class="attr-chip">Coasters</span>
+              <span class="attr-chip">High thrill</span>
+            </div>
+          </article>
+
+          <article class="attr-card">
+            <div class="attr-header">
+              <div class="attr-icon"></div>
+              <div>
+                <h3 class="attr-title t-en">Zombie &amp; robot battles</h3>
+                <h3 class="attr-title t-fr">Zombies &amp; robots</h3>
+              </div>
+            </div>
+            <p class="attr-text t-en">
+              Face waves of zombies, robots and intense shooters inside immersive VR cages. Ideal for
+              friends who love a challenge.
+            </p>
+            <p class="attr-text t-fr">
+              Affrontez des vagues de zombies, robots et shooters intenses dans des cages VR
+              immersives. Idéal pour les groupes en quête de défi.
+            </p>
+            <div class="attr-chips">
+              <span class="attr-chip">Zombie waves</span>
+              <span class="attr-chip">Robot war</span>
+              <span class="attr-chip">Survival modes</span>
+            </div>
+          </article>
+
+          <article class="attr-card">
+            <div class="attr-header">
+              <div class="attr-icon"></div>
+              <div>
+                <h3 class="attr-title t-en">Family &amp; kids adventures</h3>
+                <h3 class="attr-title t-fr">Aventures famille &amp; enfants</h3>
+              </div>
+            </div>
+            <p class="attr-text t-en">
+              Cute rides, fantasy worlds and fun experiences adapted for different ages. Great for
+              birthdays, families and weekend outings.
+            </p>
+            <p class="attr-text t-fr">
+              Manèges ludiques, mondes fantastiques et expériences adaptées aux différents âges.
+              Parfait pour anniversaires, familles et sorties du week-end.
+            </p>
+            <div class="attr-chips">
+              <span class="attr-chip">Kids-friendly</span>
+              <span class="attr-chip">Family rides</span>
+              <span class="attr-chip">Birthday-ready</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- PRICING + GAMING ZONE -->
+      <section id="pricing">
+        <p class="section-label t-en">Gravity Points System</p>
+        <p class="section-label t-fr">Système de points Gravity</p>
+
+        <div class="two-col">
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h2 class="section-title t-en">Play Smarter, Not Harder.</h2>
+              <h2 class="section-title t-fr">Jouez plus, dépensez moins.</h2>
+              <p class="pricing-sub t-en">
+                Our Gravity Card gives you more VR time for your money. Load points once and use them
+                across rides, simulators and the gaming zone.
+              </p>
+              <p class="pricing-sub t-fr">
+                Notre carte Gravity vous offre plus de temps de jeu pour votre budget. Chargez des
+                points et utilisez-les sur les manèges, simulateurs et la zone gaming.
+              </p>
+            </div>
+
+            <div style="padding: 0.75rem 0.85rem 0.85rem;">
+              <p class="attr-text t-en">
+                Gravity Card: one-time purchase of a reusable card for just 10 DH. Load points, then tap
+                to play. Most VR sessions (≈15 minutes) cost 30–40 points.
+              </p>
+              <p class="attr-text t-fr">
+                Carte Gravity : achat unique d’une carte réutilisable pour seulement 10 DH. Chargez des
+                points puis touchez pour jouer. La plupart des sessions VR (≈15 minutes) coûtent 30–40 points.
+              </p>
+            </div>
+
+            <div style="padding: 0 1rem 1rem;">
+              <table>
+                <thead>
+                  <tr>
+                    <th>DH</th>
+                    <th>Points</th>
+                    <th>Bonus</th>
+                    <th>Total</th>
+                    <th class="t-en">Best for</th>
+                    <th class="t-fr">Idéal pour</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>100</td><td>100</td><td>0</td><td>100</td>
+                    <td class="t-en">Quick taste</td>
+                    <td class="t-fr">Découverte</td>
+                  </tr>
+                  <tr>
+                    <td>200</td><td>200</td><td>+40</td><td>240</td>
+                    <td class="t-en">High value</td>
+                    <td class="t-fr">Bon rapport</td>
+                  </tr>
+                  <tr>
+                    <td>300</td><td>300</td><td>+60</td><td>360</td>
+                    <td class="t-en">Best seller</td>
+                    <td class="t-fr">Formule populaire</td>
+                  </tr>
+                  <tr>
+                    <td>400</td><td>400</td><td>+80</td><td>480</td>
+                    <td class="t-en">Serious gamers</td>
+                    <td class="t-fr">Gamers réguliers</td>
+                  </tr>
+                  <tr>
+                    <td>500</td><td>500</td><td>+100</td><td>600</td>
+                    <td class="t-en">Max savings</td>
+                    <td class="t-fr">Économies max</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="glass-soft-alt">
+            <div style="padding: 1rem 1rem 0.5rem;">
+              <h3 class="attr-title t-en">Gaming zone (non-VR)</h3>
+              <h3 class="attr-title t-fr">Zone gaming (hors VR)</h3>
+              <p class="attr-text t-en">
+                A dedicated gaming zone for console players and friends who want to chill between VR
+                rides — or stay longer on classic games.
+              </p>
+              <p class="attr-text t-fr">
+                Une zone gaming dédiée pour les joueurs consoles et amis qui veulent se détendre entre
+                deux sessions VR — ou rester plus longtemps sur les jeux classiques.
+              </p>
+            </div>
+
+            <div style="padding: 0.5rem 1rem 1rem;">
+              <div class="games-tabs">
+                <button class="games-tab active" data-target="#gaming-chill">
+                  <span class="t-en">Chill &amp; play</span>
+                  <span class="t-fr">Chill &amp; jeu</span>
+                </button>
+                <button class="games-tab" data-target="#gaming-competitive">
+                  <span class="t-en">Competitive</span>
+                  <span class="t-fr">Compétitif</span>
+                </button>
+              </div>
+
+              <div class="games-panel active" id="gaming-chill">
+                <p class="t-en">Perfect between VR sessions:</p>
+                <p class="t-fr">Parfait entre deux sessions VR :</p>
+                <div class="games-list">
+                  <span>Console stations (PS / Xbox)</span>
+                  <span>Co-op &amp; party games</span>
+                  <span>Gaming lounge area</span>
+                </div>
+              </div>
+
+              <div class="games-panel" id="gaming-competitive">
+                <p class="t-en">For more serious gamers:</p>
+                <p class="t-fr">Pour les gamers plus sérieux :</p>
+                <div class="games-list">
+                  <span>Versus matches</span>
+                  <span>Mini-tournaments</span>
+                  <span>Score challenges</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GALLERY -->
+        <div class="gallery-grid">
+          <figure class="gallery-item glass-soft">
+            <img
+              src="https://uploads.onecompiler.io/446ha97zs/446h9mvmq/WhatsApp%20Image%202025-12-03%20at%2019.55.15%20(2).jpeg"
+              alt="Gaming zone"
+            />
+            <figcaption class="gallery-label">Gaming zone</figcaption>
+          </figure>
+
+          <figure class="gallery-item glass-soft">
+            <img
+              src="https://uploads.onecompiler.io/446ha97zs/446h9mvmq/WhatsApp%20Image%202025-12-03%20at%2019.55.15%20(1).jpeg"
+              alt="Gaming zone"
+            />
+            <figcaption class="gallery-label">Gaming zone</figcaption>
+          </figure>
+
+          <figure class="gallery-item glass-soft">
+            <img
+              src="https://uploads.onecompiler.io/446ha97zs/446h9mvmq/WhatsApp%20Image%202025-12-03%20at%2019.55.14%20(5).jpeg"
+              alt="VR racing cars"
+            />
+            <figcaption class="gallery-label">VR cars &amp; coasters</figcaption>
+          </figure>
+
+          <figure class="gallery-item glass-soft">
+            <img
+              src="https://uploads.onecompiler.io/446ha97zs/446h9mvmq/WhatsApp%20Image%202025-12-03%20at%2019.55.14%20(6).jpeg"
+              alt="VR racing cars"
+            />
+            <figcaption class="gallery-label">VR cars &amp; coasters</figcaption>
+          </figure>
+
+          <figure class="gallery-item glass-soft">
+            <img
+              src="https://uploads.onecompiler.io/446ha97zs/446h9mvmq/WhatsApp%20Image%202025-12-03%20at%2019.55.14.jpeg"
+              alt="Robot war machine"
+            />
+            <figcaption class="gallery-label">Robot war</figcaption>
+          </figure>
+
+          <figure class="gallery-item glass-soft">
+            <img
+              src="https://uploads.onecompiler.io/446ha97zs/446h9mvmq/WhatsApp%20Image%202025-12-03%20at%2019.55.14%20(4).jpeg"
+              alt="Extreme 360 ride"
+            />
+            <figcaption class="gallery-label">Extreme 360° ride</figcaption>
+          </figure>
+
+          <figure class="gallery-item glass-soft">
+            <img
+              src="https://uploads.onecompiler.io/446ha97zs/446h9mvmq/WhatsApp%20Image%202025-12-03%20at%2019.55.14%20(3).jpeg"
+              alt="VR motos"
+            />
+            <figcaption class="gallery-label">VR motos</figcaption>
+          </figure>
+
+          <figure class="gallery-item glass-soft">
+            <img
+              src="https://uploads.onecompiler.io/446ha97zs/446h9mvmq/WhatsApp%20Image%202025-12-03%20at%2019.55.14%20(2).jpeg"
+              alt="VR motos"
+            />
+            <figcaption class="gallery-label">VR motos</figcaption>
+          </figure>
+
+          <figure class="gallery-item glass-soft">
+            <img
+              src="https://uploads.onecompiler.io/446ha97zs/446h9mvmq/WhatsApp%20Image%202025-12-03%20at%2019.55.16.jpeg"
+              alt="Zombie machine"
+            />
+            <figcaption class="gallery-label">Zombie machine</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- EVENTS + BOOKING -->
+      <section id="events">
+        <p class="section-label t-en">Gravity Events</p>
+        <p class="section-label t-fr">Événements Gravity</p>
+        <div class="section-header">
+          <h2 class="section-title t-en">Host Your Next Event in VR.</h2>
+          <h2 class="section-title t-fr">Organisez votre prochain événement en VR.</h2>
+          <p class="section-sub t-en">
+            Birthdays, school trips, team building or just a crazy night with friends — Gravity VR is a
+            high-energy venue with custom point bundles for every group.
+          </p>
+          <p class="section-sub t-fr">
+            Anniversaires, sorties scolaires, team building ou soirée entre amis — Gravity VR est un lieu
+            dynamique avec des packs de points adaptés à chaque groupe.
+          </p>
+        </div>
+
+        <div class="two-col" id="booking">
+          <div class="glass-soft">
+            <div style="padding: 1rem 1rem 0.4rem;">
+              <h3 class="attr-title t-en">Request a custom event quote</h3>
+              <h3 class="attr-title t-fr">Demander un devis événement</h3>
+              <p class="attr-text t-en">
+                Tell us the date, number of players and the type of event you want. We’ll contact you to
+                confirm availability and build the best mix of VR rides and games.
+              </p>
+              <p class="attr-text t-fr">
+                Indiquez la date, le nombre de joueurs et le type d’événement souhaité. Nous vous
+                contacterons pour confirmer les disponibilités et créer le meilleur mix d’attractions.
+              </p>
+            </div>
+
+            <!-- زر واتساب واضح فوق الفورم -->
+            <button type="button" class="btn-outline whatsapp-cta-button" id="whatsappQuick">
+              <span class="t-en">Book via WhatsApp</span>
+              <span class="t-fr">Réserver via WhatsApp</span>
+            </button>
+
+            <form class="booking-form">
+              <div class="form-row">
+                <input class="form-input" type="text" name="name" placeholder="Name / Nom" required />
+                <input class="form-input" type="tel" name="phone" placeholder="Phone / Téléphone" required />
+              </div>
+              <div class="form-row">
+                <input class="form-input" type="email" name="email" placeholder="Email" required />
+                <input class="form-input" type="date" name="date" />
+              </div>
+              <div class="form-row">
+                <input class="form-input" type="number" name="players" min="1" placeholder="Number of players" />
+                <select class="form-select" name="eventType">
+                  <option value="">Event type</option>
+                  <option>Birthday</option>
+                  <option>Team building</option>
+                  <option>Friends night</option>
+                  <option>School group</option>
+                </select>
+              </div>
+              <textarea
+                class="form-textarea"
+                name="message"
+                placeholder="Tell us what kind of VR experience you want..."
+              ></textarea>
+              <button class="btn-primary" type="submit">
+                <span class="t-en">Send request</span>
+                <span class="t-fr">Envoyer la demande</span>
+              </button>
+            </form>
+          </div>
+
+          <div class="glass-soft bottom-video-card">
+            <h3 class="attr-title t-en">Preview the vibe</h3>
+            <h3 class="attr-title t-fr">Découvrez l’ambiance</h3>
+            <p class="attr-text t-en">
+              A quick look at Gravity VR in motion. Use this video inside the center on screens or QR codes.
+            </p>
+            <p class="attr-text t-fr">
+              Un aperçu de Gravity VR en mouvement. Utilisez cette vidéo dans le centre sur les écrans ou QR codes.
+            </p>
+            <div style="border-radius: 1rem; overflow: hidden; margin-top: 0.65rem;">
+              <video
+                src="gravity-vr-main.mp4"
+                autoplay
+                muted
+                loop
+                playsinline
+                style="width: 100%; display: block; object-fit: cover; max-height: 220px;"
+              ></video>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LOCATION -->
+      <section id="location">
+        <p class="section-label t-en">Location &amp; Contact</p>
+        <p class="section-label t-fr">Adresse &amp; contact</p>
+        <div class="section-header">
+          <h2 class="section-title t-en">Visit Us in Marrakesh.</h2>
+          <h2 class="section-title t-fr">Venez nous voir à Marrakech.</h2>
+          <p class="section-sub t-en">
+            Find us inside GRAVITY PARK on Bd de Casablanca. Free parking, easy taxi access and a gaming world waiting inside.
+          </p>
+          <p class="section-sub t-fr">
+            Nous sommes situés dans GRAVITY PARK, Bd de Casablanca. Parking gratuit, accès taxi facile
+            et univers VR à l’intérieur.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="glass-soft">
+            <div style="padding: 0.9rem 1rem;">
+              <p class="attr-text">
+                <strong>Address:</strong> HXPQ+X4W GRAVITY PARK, Bd de Casablanca, Marrakech 40000
+              </p>
+              <p class="attr-text">
+                <strong class="t-en">Hours:</strong><strong class="t-fr">Horaires :</strong>
+                Tue–Sun: 12:00 – 23:00 · Closed Monday
+              </p>
+              <p class="attr-text">
+                <strong>Phone:</strong>
+                <a href="tel:+212603243497">+212 6 03 24 34 97</a>
+              </p>
+              <p class="attr-text">
+                <strong>Email:</strong>
+                <a href="mailto:simorafail06@gmail.com">simorafail06@gmail.com</a>
+              </p>
+            </div>
+
+            <div class="map-embed">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13324.77994532263!2d-8.030!3d31.640!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3AGRAVITY_PARK_PLACEHOLDER!2sGravity%20Park!5e0!3m2!1sfr!2sma!4v1700000000000"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+
+          <div class="glass-soft-alt">
+            <div style="padding: 0.9rem 1rem 1rem;">
+              <h3 class="attr-title t-en">Tips for your visit</h3>
+              <h3 class="attr-title t-fr">Conseils pour votre visite</h3>
+              <p class="attr-text t-en">
+                For busy evenings and weekends, we recommend booking in advance — especially for groups
+                and birthdays.
+              </p>
+              <p class="attr-text t-fr">
+                Pour les soirées et week-ends chargés, nous recommandons de réserver à l’avance — surtout
+                pour les groupes et anniversaires.
+              </p>
+              <p class="attr-text t-en">
+                Gravity VR is family-friendly, with experiences adapted to different ages. Some rides are
+                more intense; our staff can guide you to choose.
+              </p>
+              <p class="attr-text t-fr">
+                Gravity VR est adapté à la famille, avec des expériences pour différents âges. Certaines
+                attractions sont plus intenses ; notre équipe pourra vous conseiller.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© <span id="year"></span> Gravity VR Marrakech. All rights reserved.</span>
+      <div class="footer-links">
+        <a href="#top">Top</a>
+        <a href="#attractions">Attractions</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#events">Events</a>
+        <a href="#location">Location</a>
+      </div>
+    </footer>
   </div>
 
-  <div class="nav-right">
-      <button class="language-toggle">EN</button>
-      <button class="btn-primary">BOOK NOW</button>
-  </div>
-</header>
+  <script>
+    // Year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-<section class="hero-section">
-  <img src="hero-fallback.jpg" alt="VR Experience">
-</section>
+    // Smooth scroll
+    document.querySelectorAll("[data-scroll]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var target = document.querySelector(btn.getAttribute("data-scroll"));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: "smooth",
+          });
+        }
+      });
+    });
 
-<!-- بقية الصفحة بدون تغيير... -->
+    // Language switch
+    var langButtons = document.querySelectorAll(".lang-btn");
+    var langToggle = document.getElementById("langToggle");
 
+    langButtons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var lang = btn.dataset.lang;
+        document.documentElement.lang = lang === "fr" ? "fr" : "en";
+        document.body.classList.toggle("lang-fr", lang === "fr");
+        langToggle.classList.toggle("lang-fr", lang === "fr");
+
+        langButtons.forEach(function (b) {
+          b.classList.toggle("active", b === btn);
+        });
+      });
+    });
+
+    // Font toggle
+    document.getElementById("fontToggle").addEventListener("click", function () {
+      document.body.classList.toggle("font-alt");
+    });
+
+    // Tabs for gaming zone
+    document.querySelectorAll(".games-tab").forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        var targetSelector = tab.getAttribute("data-target");
+        var parent = tab.closest(".glass-soft-alt") || document;
+        parent.querySelectorAll(".games-tab").forEach(function (t) {
+          t.classList.toggle("active", t === tab);
+        });
+        parent.querySelectorAll(".games-panel").forEach(function (panel) {
+          panel.classList.toggle("active", "#" + panel.id === targetSelector);
+        });
+      });
+    });
+
+    // Autoplay helper for videos
+    document.querySelectorAll("video").forEach(function (video) {
+      video.muted = true;
+      video.setAttribute("playsinline", "true");
+      try {
+        var p = video.play();
+        if (p && p.catch) p.catch(function () {});
+      } catch (e) {}
+      if (video.autoplay && video.muted) {
+        video.addEventListener("canplay", function () {
+          try {
+            var p2 = video.play();
+            if (p2 && p2.catch) p2.catch(function () {});
+          } catch (e) {}
+        });
+      }
+    });
+
+    // WhatsApp integration (uses your number)
+    (function () {
+      // 0603243497  ->  +212 603 243 497
+      var phoneNumber = "212603243497";
+
+      function buildBookingMessage() {
+        var form = document.querySelector(".booking-form");
+        if (!form) return "";
+        var data = {
+          name: form.elements["name"] ? form.elements["name"].value : "",
+          phone: form.elements["phone"] ? form.elements["phone"].value : "",
+          email: form.elements["email"] ? form.elements["email"].value : "",
+          date: form.elements["date"] ? form.elements["date"].value : "",
+          players: form.elements["players"] ? form.elements["players"].value : "",
+          eventType: form.elements["eventType"] ? form.elements["eventType"].value : "",
+          message: form.elements["message"] ? form.elements["message"].value : ""
+        };
+
+        var lines = [
+          "Hi Gravity VR! I’d like to book an event at Gravity VR Marrakech.",
+          "",
+          "Name: " + (data.name || "-"),
+          "Phone: " + (data.phone || "-"),
+          "Email: " + (data.email || "-"),
+          "Players: " + (data.players || "-"),
+          "Date: " + (data.date || "-"),
+          "Event type: " + (data.eventType || "-"),
+          "",
+          "Details: " + (data.message || "-")
+        ];
+        return lines.join("\n");
+      }
+
+      function openWhatsApp(withForm) {
+        if (!phoneNumber) return;
+        var base = "https://wa.me/" + phoneNumber;
+        var url = base;
+        if (withForm) {
+          var text = buildBookingMessage();
+          url += "?text=" + encodeURIComponent(text);
+        } else {
+          var text = "Hi Gravity VR! I’d like to book a VR session.";
+          url += "?text=" + encodeURIComponent(text);
+        }
+        window.open(url, "_blank");
+      }
+
+      var quickBtn = document.getElementById("whatsappQuick");
+      if (quickBtn) {
+        quickBtn.addEventListener("click", function () {
+          openWhatsApp(false);
+        });
+      }
+
+      var bookingForm = document.querySelector(".booking-form");
+      if (bookingForm) {
+        bookingForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+          openWhatsApp(true);
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
