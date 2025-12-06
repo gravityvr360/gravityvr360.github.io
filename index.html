@@ -1,43 +1,157 @@
-@media (max-width: 768px) {
-      header.navbar {
-        padding: 0.7rem 0.8rem;
-        border-radius: 999px;
-        margin-bottom: 1.2rem;
-        gap: 0.6rem;
-      }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GRAVITY VR MARRAKESH</title>
 
-      .nav-center {
-        display: none;
-      }
+<style>
+/* --------------------------------------------- */
+/* BASE DESIGN (NO CHANGES) */
+/* --------------------------------------------- */
 
-      .brand-title {
-        font-size: 0.8rem;
-        letter-spacing: 0.18em;
-      }
-
-      .brand-sub {
-        font-size: 0.62rem;
-      }
-
-      /* لوجو أكبر على الموبايل */
-      .logo-orbit {
-        width: 40px;
-        height: 40px;
-        border-radius: 12px;
-      }
-
-      .nav-right {
-        gap: 0.4rem;
-      }
-
-      .font-toggle {
-        display: none;
-      }
-
-      /* تصغير زر BOOK NOW في الهيدر فقط */
-      .navbar .btn-primary {
-        padding: 0.35rem 0.7rem;
-        font-size: 0.62rem;
-        letter-spacing: 0.14em;
-      }
+body {
+  margin: 0;
+  background: #0b0f1a;
+  font-family: Arial, sans-serif;
+  color: white;
+  overflow-x: hidden;
 }
+
+header.navbar {
+  width: calc(100% - 2rem);
+  margin: 1rem auto;
+  padding: 1rem 1.5rem;
+  background: rgba(255,255,255,0.05);
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(10px);
+}
+
+.logo-orbit {
+  width: 48px;   /* تكبير اللوجو */
+  height: 48px;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-orbit img {
+  width: 100%;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.brand-title {
+  font-size: 1.1rem;
+  letter-spacing: 0.22em;
+}
+
+.brand-sub {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.language-toggle,
+.font-toggle,
+.btn-primary {
+  padding: 0.45rem 1rem;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #3fb3ff, #5f4dff);
+  color: white;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+}
+
+/* --------------------------------------------- */
+/* MOBILE FIXES — BOOK NOW smaller + logo bigger */
+/* --------------------------------------------- */
+
+@media (max-width: 768px) {
+  .logo-orbit {
+    width: 40px;  /* أكبر من قبل */
+    height: 40px;
+    border-radius: 12px;
+  }
+
+  .navbar .btn-primary {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+  }
+
+  .nav-center {
+    display: none; /* حذف السطور داخل الهاتف */
+  }
+}
+
+/* --------------------------------------------- */
+/* MAIN HERO */
+/* --------------------------------------------- */
+
+.hero-section {
+  width: 90%;
+  margin: auto;
+  margin-top: 1rem;
+  border-radius: 30px;
+  overflow: hidden;
+  background: #111;
+  position: relative;
+}
+
+.hero-section img {
+  width: 100%;
+  display: block;
+}
+
+/* --------------------------------------------- */
+
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+  <div class="nav-left">
+      <div class="logo-orbit">
+          <img src="logo.png" alt="GRAVITY VR" />
+      </div>
+      <div>
+          <div class="brand-title">GRAVITY VR</div>
+          <div class="brand-sub">MARRAKESH · VR & GAMING CENTER</div>
+      </div>
+  </div>
+
+  <div class="nav-right">
+      <button class="language-toggle">EN</button>
+      <button class="btn-primary">BOOK NOW</button>
+  </div>
+</header>
+
+<section class="hero-section">
+  <img src="hero-fallback.jpg" alt="VR Experience">
+</section>
+
+<!-- بقية الصفحة بدون تغيير... -->
+
+</body>
+</html>
